@@ -1,49 +1,80 @@
-import React, { Component } from "react";
+import React from "react";
 import s from "./Searchbar.module.css";
 
-export default class Searchbar extends Component {
-  state = {
-    imageName: "",
-  };
+const Searchbar = ({ onFormSubmit }) => {
+  return (
+    <div>
+      <header className={s.Searchbar}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            onFormSubmit(e.target.elements.imageName.value);
+          }}
+          className={s.SearchForm}
+        >
+          <button type="submit" className={s.SearchFormButton}>
+            <span className={s.SearchFormButtonLabel}>Search</span>
+          </button>
 
-  handleImageNameChange = (e) => {
-    this.setState({ imageName: e.currentTarget.value.toLowerCase() });
-  };
+          <input
+            className={s.SearchFormInput}
+            type="text"
+            name="imageName"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search images and photos"
+          />
+        </form>
+      </header>
+    </div>
+  );
+};
 
-  handleFormSubmit = (e) => {
-    e.preventDefault();
+export default Searchbar;
 
-    if (this.state.imageName.trim() === "") {
-      console.log("error");
-      return;
-    }
+// export default class Searchbar extends Component {
+//   state = {
+//     imageName: "",
+//   };
 
-    this.props.onSubmit(this.state.imageName);
-    this.setState({ imageName: "" });
-  };
+//   handleImageNameChange = (e) => {
+//     this.setState({ imageName: e.currentTarget.value.toLowerCase() });
+//   };
 
-  render() {
-    return (
-      <div>
-        <header className={s.Searchbar}>
-          <form onSubmit={this.handleFormSubmit} className={s.SearchForm}>
-            <button type="submit" className={s.SearchFormButton}>
-              <span className={s.SearchFormButtonLabel}>Search</span>
-            </button>
+//   handleFormSubmit = (e) => {
+//     e.preventDefault();
 
-            <input
-              className={s.SearchFormInput}
-              type="text"
-              name="imageName"
-              value={this.state.imageName}
-              onChange={this.handleImageNameChange}
-              autoComplete="off"
-              autoFocus
-              placeholder="Search images and photos"
-            />
-          </form>
-        </header>
-      </div>
-    );
-  }
-}
+//     if (this.state.imageName.trim() === "") {
+//       console.log("error");
+//       return;
+//     }
+
+//     this.props.onSubmit(this.state.imageName);
+//     this.setState({ imageName: "" });
+//   };
+
+//   render() {
+//     return (
+//       <div>
+//         <header className={s.Searchbar}>
+//           <form onSubmit={this.handleFormSubmit} className={s.SearchForm}>
+//             <button type="submit" className={s.SearchFormButton}>
+//               <span className={s.SearchFormButtonLabel}>Search</span>
+//             </button>
+
+//             <input
+//               className={s.SearchFormInput}
+//               type="text"
+//               name="imageName"
+//               value={this.state.imageName}
+//               onChange={this.handleImageNameChange}
+//               autoComplete="off"
+//               autoFocus
+//               placeholder="Search images and photos"
+//             />
+//           </form>
+//         </header>
+//       </div>
+//     );
+//   }
+// }
