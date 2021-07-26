@@ -1,14 +1,17 @@
+import PropTypes from "prop-types";
 import s from "./ImageGalleryItem.module.css";
 
-const ImageGalleryItem = ({ id, imageSrc, tags, largeImageURL }) => {
+const ImageGalleryItem = ({ imageSrc, tags, largeImageURL, onImageClick }) => {
   return (
     <>
       <li className={s.ImageGalleryItem}>
         <img
           src={imageSrc}
           alt={tags}
-          // largeImageURL={largeImageURL}
           className={s.ImageGalleryItemImage}
+          onClick={(e) => {
+            onImageClick(largeImageURL);
+          }}
         />
       </li>
     </>
@@ -16,3 +19,10 @@ const ImageGalleryItem = ({ id, imageSrc, tags, largeImageURL }) => {
 };
 
 export default ImageGalleryItem;
+
+ImageGalleryItem.propTipes = {
+  imageSrc: PropTypes.string.isRequired,
+  tags: PropTypes.string.isRequired,
+  largeImageURL: PropTypes.string.isRequired,
+  onImageClick: PropTypes.func.isRequired,
+};
