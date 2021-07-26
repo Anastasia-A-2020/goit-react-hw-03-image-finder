@@ -1,10 +1,15 @@
 import s from "./ImageGalleryItem.module.css";
 
-const ImageGalleryItem = ({ id, imageSrc, tags }) => {
+const ImageGalleryItem = ({ id, imageSrc, tags, largeImageURL }) => {
   return (
     <>
-      <li key={id} className={ImageGalleryItem}>
-        <img src={imageSrc} alt={tags} className={s.ImageGalleryItemImage} />
+      <li className={s.ImageGalleryItem}>
+        <img
+          src={imageSrc}
+          alt={tags}
+          // largeImageURL={largeImageURL}
+          className={s.ImageGalleryItemImage}
+        />
       </li>
     </>
   );

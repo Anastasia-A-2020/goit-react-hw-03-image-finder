@@ -6,8 +6,14 @@ const ImageGallery = ({ images }) => {
   return (
     <>
       <ul className={s.ImageGallery}>
-        {images.map(({ id, webformatURL, tags }) => (
-          <ImageGalleryItem id={id} imageSrc={webformatURL} tags={tags} />
+        {images.map(({ id, webformatURL, tags, largeImageURL }) => (
+          <ImageGalleryItem
+            key={id}
+            id={id}
+            imageSrc={webformatURL}
+            tags={tags}
+            // largeImageURL={largeImageURL}
+          />
         ))}
       </ul>
     </>

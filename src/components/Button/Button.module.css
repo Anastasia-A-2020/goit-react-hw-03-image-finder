@@ -1,3 +1,9 @@
+.wrapperButton {
+  display: flex;
+  justify-content: center;
+  margin: 5px 0;
+}
+
 .Button {
   padding: 8px 16px;
   border-radius: 2px;
